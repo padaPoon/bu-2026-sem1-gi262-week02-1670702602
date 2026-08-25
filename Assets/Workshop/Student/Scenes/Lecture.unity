@@ -367,7 +367,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ded01441108a274ea0e26ba5ef57e8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assignment.Lecture
-  lct04_ironManSuitNames: []
+  ironManSuit:
+  - Mark I
+  - Mark II
+  - Mark III
+  lct04_ironManSuitNames:
+  - Mark I
+  - Mark II
+  - Mark III
+  - Mark IV
+  - Mark V
   lct06_my2DArray:
     rows: 3
     cols: 5

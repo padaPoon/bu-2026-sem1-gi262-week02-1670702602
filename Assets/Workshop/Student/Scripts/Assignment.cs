@@ -46,7 +46,15 @@ namespace Assignment
         public GameObject[] as01_items;
         public void AS01_RandomItemDrop()
         {
-            throw new NotImplementedException();
+            as01_items = new GameObject[4];
+            as01_items[0] = new GameObject("Item 1");
+            as01_items[1] = new GameObject("Item 2");
+            as01_items[2] = new GameObject("Item 3");
+            as01_items[3] = new GameObject("Item 4");
+            System.Random rand = new System.Random();
+            GameObject selectedItem = as01_items[rand.Next(as01_items.Length)];
+            Debug.Log($"Got item: {selectedItem.name}");
+
         }
 
         /*

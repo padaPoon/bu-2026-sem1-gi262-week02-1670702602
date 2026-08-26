@@ -12,10 +12,12 @@ namespace Workshop.Student
         public GameObject[] wallTiles;
         public GameObject[] foodTiles;
 
-        public string[,] saveItemMap = new string[3, 3] {
-            { " ", "Soda", " "},
-            { " ", " ", " "},
-            { " ", " ", "Food"},
+        // Unity does not serialize multidimensional arrays, so store the map as a
+        // one-dimensional array and index it by row and column when needed.
+        public string[] saveItemMap = new string[9] {
+            " ", "Soda", " ",
+            " ", " ", " ",
+            " ", " ", "Food",
         };
 
         // 1. declare Players variable
@@ -56,7 +58,7 @@ namespace Workshop.Student
             {
                 for (int x = -1; x < columns + 1; x++)
                 {
-                    if (x == -1 || x == rows || y == -1 || y == columns)
+                    if (x == -1 || x == columns || y == -1 || y == rows)
                     {
                         int r = UnityEngine.Random.Range(0, wallTiles.Length);
                         GameObject tile = Instantiate(wallTiles[r], new Vector2(x, y), Quaternion.identity);
@@ -76,12 +78,12 @@ namespace Workshop.Student
             }
             // 6. generate item along with the saveItemMap
 
-            for (int y = 0; y < saveItemMap.GetLength(0); y++)
+            for (int y = 0; y < 3; y++)
             {
-                for (int x = 0; x < saveItemMap.GetLength(1); x++)
+                for (int x = 0; x < 3; x++)
                 {
-                    string item = saveItemMap[y, x];
-                    if (string.IsNullOrEmpty(item))
+                    string item = saveItemMap[y * 3 + x];
+                    if (!string.IsNullOrEmpty(item) && item != " ")
                     {
                         foreach (var food in foodTiles)
                         {
